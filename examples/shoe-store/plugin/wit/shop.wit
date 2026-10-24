@@ -1,0 +1,39 @@
+package berlin:shoes@0.1.0;
+
+/// Simulated sneaker stock and pickup reservations. No payment or real stock.
+interface inventory {
+    record size-stock { size: u32, available: u32 }
+    record product {
+        id: string,
+        name: string,
+        description: string,
+        price-cents: u32,
+        sizes: list<size-stock>,
+    }
+    record catalog { shop: string, currency: string, products: list<product> }
+    enum reservation-status { reserved, cancelled }
+    record reservation {
+        id: u32,
+        product-id: string,
+        product-name: string,
+        size: u32,
+        price-cents: u32,
+        status: reservation-status,
+    }
+    enum reservation-error {
+        unknown-product, invalid-size, out-of-stock, invalid-request-id,
+        request-id-conflict, capacity-reached, unknown-reservation,
+    }
+    get-catalog: func() -> catalog;
+    /// Reserve one pair for pickup. Reuse request-id (8–64 letters/digits/._-)
+    /// on retries. A cancelled reservation stays cancelled when retried.
+    reserve: func(product-id: string, size: u32, request-id: string) -> result<reservation, reservation-error>;
+    get-reservation: func(id: u32) -> option<reservation>;
+    get-reservations: func() -> list<reservation>;
+    /// Idempotent cancellation releases the pair back to stock.
+    cancel: func(id: u32) -> result<reservation, reservation-error>;
+}
+world shoe-store {
+    export inventory;
+    export agent:web/handler@0.1.0;
+}

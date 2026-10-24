@@ -344,6 +344,11 @@ Stopping the MCP server closes all mounts. A new server session gets new ports.
 
 ## Pizza restaurant demo
 
+For a second named peer, run `just mcp shoes` (or `just run shoes` for its own
+Codex agent). [Kiez Kicks](examples/shoe-store/README.md) hosts a sneaker catalog,
+live stock by size, and pickup reservations on port 47833, alongside Forno Pizza
+on port 47831. Discover either business by name from the same guest agent.
+
 With `just` installed, use `just mcp restaurant` to launch the restaurant and
 `just run guest` to open Codex CLI with the guest MCP server configured for that
 session. `just mcp guest` provides the plain guest MCP stdio server for other

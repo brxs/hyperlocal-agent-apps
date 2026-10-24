@@ -1,0 +1,26 @@
+package agent:web@0.1.0;
+
+/// Optional browser interface. The host mounts this export on loopback HTTP.
+interface handler {
+    type headers = list<tuple<string, string>>;
+
+    record request {
+        method: string,
+        /// Path and query, e.g. /api/items?page=2.
+        path: string,
+        headers: headers,
+        body: list<u8>,
+    }
+
+    record response {
+        status: u16,
+        headers: headers,
+        body: list<u8>,
+    }
+
+    handle: func(request: request) -> response;
+}
+
+world web-plugin {
+    export handler;
+}

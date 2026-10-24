@@ -1,4 +1,4 @@
-"""Launch Codex with a session-local restaurant or guest MCP configuration."""
+"""Launch Codex with a session-local business or guest MCP configuration."""
 
 import json
 import os
@@ -8,8 +8,8 @@ import sys
 
 
 def main():
-    if len(sys.argv) < 2 or sys.argv[1] not in ('restaurant', 'guest'):
-        sys.exit('Usage: codex.py restaurant|guest [Codex arguments...]')
+    if len(sys.argv) < 2 or sys.argv[1] not in ('restaurant', 'shoes', 'guest'):
+        sys.exit('Usage: codex.py restaurant|shoes|guest [Codex arguments...]')
     role = sys.argv[1]
     codex = shutil.which('codex')
     if codex is None:
@@ -20,6 +20,11 @@ def main():
         server_arguments.extend([
             '--share-live', '--name', 'Forno Pizza', '--port', '47831',
             '--plugin', f'restaurant={root / "fixtures/pizzeria.wasm"}',
+        ])
+    elif role == 'shoes':
+        server_arguments.extend([
+            '--share-live', '--name', 'Kiez Kicks', '--port', '47833',
+            '--plugin', f'shoes={root / "fixtures/shoe-store.wasm"}',
         ])
     configuration = {
         'command': str(root / 'target/debug/hyperlocal-agent-apps'),
