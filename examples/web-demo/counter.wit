@@ -1,0 +1,9 @@
+package example:counter@0.1.0;
+
+/// Both this interface and the web handler use the same guest counter global.
+interface state {
+    get: func() -> u32;
+    /// Uses u32 wrapping addition.
+    increment: func(amount: u32) -> u32;
+    reset: func() -> u32;
+}

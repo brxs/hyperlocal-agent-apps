@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Forno Pizza · Back office</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/back-office.js" defer></script>
+</head>
+<body>
+  <div class="demo-strip">Simulated back office · no kitchen dispatch or payment · shared demo access, no staff login</div>
+  <header class="topbar">
+    <a class="wordmark" href="/" aria-label="Forno Pizza menu">forno<span>●</span></a>
+    <div class="peer"><span class="dot"></span><span>RESTAURANT BACK OFFICE</span></div>
+    <a href="/">View menu ↗</a>
+  </header>
+  <main>
+    <section class="hero">
+      <div><p class="eyebrow">FROM THE MENU &amp; YOUR GUESTS’ AGENTS</p><h1>Orders, fresh in.</h1>
+      <p class="intro">Every table. One live ledger.<br>Received orders stay open in this demo; there is no fulfilment workflow yet.</p></div>
+    </section>
+    <section class="office-section" aria-labelledby="orders-heading">
+      <div class="section-title"><h2 id="orders-heading">Open orders <span id="order-count">0</span></h2><span id="connection-status" class="live-label">CONNECTING</span></div>
+      <p id="office-summary" class="menu-note" role="status">Reading the restaurant’s orders…</p>
+      <div id="office-orders" class="office-grid" aria-live="polite"></div>
+    </section>
+  </main>
+</body>
+</html>

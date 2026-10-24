@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Forno Pizza · Local menu</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="demo-strip">A local restaurant demo. No real order, kitchen dispatch, or payment.</div>
+  <header class="topbar">
+    <a class="wordmark" href="/" aria-label="Forno Pizza home">forno<span>●</span></a>
+    <div class="peer"><span class="dot"></span><span id="peer-name">Forno Pizza</span><small>LOCAL PEER</small></div>
+    <label class="table-label" for="table">YOUR TABLE <input id="table" type="number" min="1" max="40" value="7" aria-label="Table number"></label>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">PIZZA DI QUARTIERE · MADE FOR YOUR TABLE</p>
+        <h1>A little sunshine.<br>A little <em>after dark.</em></h1>
+        <p class="intro">Your Hawaii is here. So is Berghain, our black-dough special.<br>Choose your pizza, order here or with your agent, and stay for another slice.</p>
+        <div class="hero-note"><span>01</span> Join the Wi-Fi <b>→</b><span>02</span> Meet the peer <b>→</b><span>03</span> Order with your agent</div>
+      </div>
+      <img src="/pizza.svg" alt="Illustrated Hawaii pizza with ham, pineapple and basil" width="280" height="280">
+    </section>
+    <div class="main-grid">
+      <section class="menu-section" aria-labelledby="menu-heading">
+        <div class="section-title"><h2 id="menu-heading">The pizzas</h2><span>BERLIN BITES · CODEX NIGHTS</span></div>
+        <div id="menu" class="menu-grid" aria-live="polite"><p>Loading the restaurant menu…</p></div>
+        <p class="menu-note">All prices in EUR. This menu and the live order ledger are hosted by the restaurant’s WASM component.</p>
+      </section>
+      <aside>
+        <section class="order-card" aria-labelledby="order-heading">
+          <p class="eyebrow">YOUR PICK · TABLE <span id="table-summary">07</span></p>
+          <h2 id="order-heading">One Hawaii,<br>coming right up?</h2>
+          <div class="order-line"><span id="selected-name">Hawaii</span><strong id="selected-price">€13.50</strong></div>
+          <label class="quantity-label">Quantity <select id="quantity" aria-label="Pizza quantity"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+          <button id="place-order" class="primary order-button" type="button" disabled>Place demo order</button>
+          <p id="order-status" class="hint" role="status" aria-live="polite">No payment is taken.</p>
+          <div class="agent-label"><span class="spark">✳</span> ASK YOUR AGENT</div>
+          <p id="order-prompt" class="prompt">Connecting to the menu…</p>
+          <button id="copy-request" class="primary secondary" type="button">Copy order request <span aria-hidden="true">↗</span></button>
+          <p class="hint">Order here or ask your agent. Both use the restaurant’s shared order ledger.</p>
+        </section>
+        <section class="receipt-section" aria-labelledby="receipt-heading">
+          <div class="section-title"><h2 id="receipt-heading">Your table’s orders</h2><span id="connection-status" class="live-label">LIVE</span></div>
+          <div id="orders" aria-live="polite"><div class="empty-receipt">No orders yet.<br><small>Your agent’s order will appear here.</small></div></div>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <footer><span>forno · a good place to be.</span><a href="/back-office">Restaurant back office ↗</a><span>LOCAL WI-FI. ONE RESTAURANT. SHARED STATE.</span></footer>
+</body>
+</html>

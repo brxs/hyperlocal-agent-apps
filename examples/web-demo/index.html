@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Shared WASM counter</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #18352c; background: #eef3ec; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; }
+    main { width: min(580px, calc(100% - 64px)); padding: 32px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 650; letter-spacing: .06em; }
+    .badge::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #32885a; }
+    h1 { font-size: clamp(38px, 8vw, 64px); line-height: 1.02; letter-spacing: -.055em; margin: 24px 0; }
+    p { line-height: 1.6; color: #54675f; }
+    .card { background: #fff; border: 1px solid #d6dfd5; border-radius: 16px; margin: 28px 0 20px; padding: 28px; }
+    .label { font-size: 12px; letter-spacing: .08em; color: #62746a; }
+    output { display: block; font-size: 88px; line-height: 1.25; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -.05em; }
+    .controls { display: flex; gap: 10px; margin-top: 14px; }
+    button { font: inherit; border-radius: 8px; padding: 12px 16px; cursor: pointer; border: 0; background: #234f3f; color: #fff; }
+    button.secondary { background: #eef3ec; color: #234f3f; }
+    button:disabled { opacity: .5; cursor: wait; }
+    #status { font-size: 12px; min-height: 36px; margin-bottom: 0; }
+    code { font-size: 12px; background: #e1e9df; border-radius: 4px; padding: 3px 5px; }
+    .note { font-size: 13px; }
+  </style>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <span class="badge" id="peer">THIS DEVICE · LIVE WASM INSTANCE</span>
+    <h1>One counter.<br>Two ways in.</h1>
+    <p>Change the counter here, or ask your agent to increment it. Both use the same state inside this plugin.</p>
+    <section class="card" aria-label="Shared counter">
+      <span class="label">SHARED VALUE</span>
+      <output id="counter" aria-label="Counter value" aria-live="polite">—</output>
+      <div class="controls">
+        <button id="increment">Add 1 from browser</button>
+        <button id="reset" class="secondary">Reset</button>
+      </div>
+      <p id="status" role="status">Connecting...</p>
+    </section>
+    <p class="note">Agent interface: <code>example:counter/state@0.1.0</code><br>Functions: <code>get</code>, <code>increment(amount)</code>, <code>reset</code>.</p>
+    <p class="note">Refresh the page: the value stays. Reconnect the plugin: it starts at zero.</p>
+  </main>
+</body>
+</html>
