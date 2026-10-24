@@ -25,3 +25,6 @@ rustc-ice-*.txt
 
 # Downloaded peer components
 .hyperlocal/
+
+# Python demo launchers
+__pycache__/

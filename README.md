@@ -344,6 +344,11 @@ Stopping the MCP server closes all mounts. A new server session gets new ports.
 
 ## Pizza restaurant demo
 
+Run `just foodcourt` for a [multi-vendor food court](examples/foodcourt/README.md):
+Kiez Tacos, Mitte Ramen, Spree Spritz, and Kreuzberg Taproom each advertise as
+independent peers with their own menus, websites, and live order ledgers.
+Use `just run guest` to discover them and compare menus or place simulated orders.
+
 For a second named peer, run `just mcp shoes` (or `just run shoes` for its own
 Codex agent). [Kiez Kicks](examples/shoe-store/README.md) hosts a sneaker catalog,
 live stock by size, and pickup reservations on port 47833, alongside Forno Pizza

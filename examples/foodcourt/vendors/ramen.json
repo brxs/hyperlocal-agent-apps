@@ -1,0 +1,9 @@
+{
+  "name":"Mitte Ramen", "category":"RAMEN KITCHEN", "tagline":"Good broth. No shortcuts.", "accent":"#41634a",
+  "items":[
+    {"id":"miso-ramen","name":"Miso Ramen","description":"Miso broth, noodles, pork chashu, marinated egg and spring onion.","price_cents":1450,"vegetarian":false},
+    {"id":"vegan-tantan","name":"Vegan Tantan","description":"Sesame broth, noodles, chilli tofu, pak choi and roasted mushrooms. Vegan.","price_cents":1350,"vegetarian":true},
+    {"id":"gyoza","name":"Vegetable Gyoza","description":"Six crispy vegetable dumplings with ginger dipping sauce.","price_cents":650,"vegetarian":true},
+    {"id":"yuzu-soda","name":"Yuzu Soda","description":"Yuzu citrus, soda and a slice of lemon. Alcohol-free.","price_cents":450,"vegetarian":true}
+  ]
+}

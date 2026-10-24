@@ -1,0 +1,52 @@
+package foodcourt:vendor@0.1.0;
+
+/// A simulated food-court vendor. Prices are integer cents; no payment is taken.
+interface service {
+    record item {
+        id: string,
+        name: string,
+        description: string,
+        price-cents: u32,
+        vegetarian: bool,
+    }
+    record menu {
+        restaurant: string,
+        category: string,
+        tagline: string,
+        currency: string,
+        items: list<item>,
+    }
+    enum order-status { received }
+    record order {
+        id: u32,
+        item-id: string,
+        item-name: string,
+        quantity: u32,
+        table: u32,
+        total-cents: u32,
+        status: order-status,
+    }
+    enum order-error {
+        unknown-item,
+        invalid-quantity,
+        invalid-table,
+        invalid-request-id,
+        request-id-conflict,
+        capacity-reached,
+    }
+
+    get-menu: func() -> menu;
+    /// Simulated order. Tables 1–40; quantity 1–5. Use a unique 8–64 character
+    /// request-id and reuse that same id when retrying an identical request.
+    /// Reuse with different arguments returns request-id-conflict.
+    place-order: func(item-id: string, quantity: u32, table: u32, request-id: string) -> result<order, order-error>;
+    get-order: func(id: u32) -> option<order>;
+    get-table-orders: func(table: u32) -> result<list<order>, order-error>;
+    /// All received orders across tables, for the restaurant back office.
+    get-open-orders: func() -> list<order>;
+}
+
+world vendor {
+    export service;
+    export agent:web/handler@0.1.0;
+}

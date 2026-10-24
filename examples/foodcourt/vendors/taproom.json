@@ -1,0 +1,43 @@
+{
+  "name": "Kreuzberg Taproom",
+  "category": "BEER, SOFT DRINKS & BAR SNACKS",
+  "tagline": "A round for the courtyard.",
+  "accent": "#806020",
+  "items": [
+    {
+      "id": "kiez-pils",
+      "name": "Kiez Pils",
+      "description": "Crisp pilsner, 0.4 L. Contains alcohol. Simulated drink only.",
+      "price_cents": 550,
+      "vegetarian": true
+    },
+    {
+      "id": "hazy-ipa",
+      "name": "Courtyard Hazy IPA",
+      "description": "Citrus-led hazy IPA, 0.4 L. Contains alcohol. Simulated drink only.",
+      "price_cents": 650,
+      "vegetarian": true
+    },
+    {
+      "id": "lager-zero",
+      "name": "Lager 0.0",
+      "description": "Alcohol-free lager, 0.33 L.",
+      "price_cents": 450,
+      "vegetarian": true
+    },
+    {
+      "id": "apple-schorle",
+      "name": "Apple Schorle",
+      "description": "Cloudy apple juice and sparkling water, 0.4 L. Alcohol-free.",
+      "price_cents": 350,
+      "vegetarian": true
+    },
+    {
+      "id": "chicken-nuggets",
+      "name": "Kiez Chicken Nuggets",
+      "description": "Six crispy chicken nuggets with curry dip. A snack for your courtyard table.",
+      "price_cents": 750,
+      "vegetarian": false
+    }
+  ]
+}

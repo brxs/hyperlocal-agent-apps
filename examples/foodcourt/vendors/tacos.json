@@ -1,0 +1,9 @@
+{
+  "name": "Kiez Tacos", "category": "TACOS & SMALL PLATES", "tagline": "A little heat in the Kiez.", "accent": "#a44526",
+  "items": [
+    {"id":"al-pastor","name":"Al Pastor Tacos","description":"Three corn tortillas, marinated pork, grilled pineapple, coriander and lime.","price_cents":1150,"vegetarian":false},
+    {"id":"mushroom-tacos","name":"Mushroom Tacos","description":"Three corn tortillas with roasted oyster mushrooms, salsa verde and pickled onion.","price_cents":1050,"vegetarian":true},
+    {"id":"elote","name":"Street Corn","description":"Grilled corn, lime crema, cotija cheese and smoked chilli.","price_cents":550,"vegetarian":true},
+    {"id":"agua-fresca","name":"Hibiscus Agua Fresca","description":"Hibiscus, lime and sparkling water. Alcohol-free.","price_cents":400,"vegetarian":true}
+  ]
+}

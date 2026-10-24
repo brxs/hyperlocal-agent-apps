@@ -1,0 +1,9 @@
+{
+  "name":"Spree Spritz", "category":"COCKTAIL & MOCKTAIL BAR", "tagline":"Something bright by the Spree.", "accent":"#9b3d67",
+  "items":[
+    {"id":"spree-spritz","name":"Spree Spritz","description":"Aperitivo, sparkling wine, soda and orange. Contains alcohol. Simulated drink only.","price_cents":950,"vegetarian":true},
+    {"id":"negroni","name":"Kiez Negroni","description":"Gin, bitter aperitivo and vermouth. Contains alcohol. Simulated drink only.","price_cents":1100,"vegetarian":true},
+    {"id":"rhubarb-fizz","name":"Rhubarb Fizz 0.0","description":"Rhubarb, lime and soda. Alcohol-free.","price_cents":650,"vegetarian":true},
+    {"id":"citrus-tonic","name":"Citrus Garden 0.0","description":"Grapefruit, rosemary and tonic. Alcohol-free.","price_cents":600,"vegetarian":true}
+  ]
+}

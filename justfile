@@ -8,13 +8,13 @@ default:
 chatgpt *args:
     @cargo run --quiet --locked -- --http 127.0.0.1:47832 --download-dir .hyperlocal/guest-plugins "$@"
 
-# Launch an MCP stdio server: restaurant, shoes, or guest. Extra arguments go to the server.
+# Launch a business or guest MCP stdio server. Food-court roles: tacos, ramen, spritz, taproom.
 mcp role *args:
-    @case "$1" in restaurant) shift; exec cargo run --quiet --locked -- --share-live --name "Forno Pizza" --port 47831 --plugin restaurant=fixtures/pizzeria.wasm "$@" ;; shoes) shift; exec cargo run --quiet --locked -- --share-live --name "Kiez Kicks" --port 47833 --plugin shoes=fixtures/shoe-store.wasm "$@" ;; guest) shift; exec cargo run --quiet --locked -- --download-dir .hyperlocal/guest-plugins "$@" ;; *) echo "Usage: just mcp restaurant|shoes|guest [server arguments...]" >&2; exit 2 ;; esac
+    @case "$1" in restaurant) shift; exec cargo run --quiet --locked -- --share-live --name "Forno Pizza" --port 47831 --plugin restaurant=fixtures/pizzeria.wasm "$@" ;; shoes) shift; exec cargo run --quiet --locked -- --share-live --name "Kiez Kicks" --port 47833 --plugin shoes=fixtures/shoe-store.wasm "$@" ;; guest) shift; exec cargo run --quiet --locked -- --download-dir .hyperlocal/guest-plugins "$@" ;; tacos|ramen|spritz|taproom) cargo build --quiet --locked && exec python3 examples/foodcourt/launch.py "$@" ;; *) echo "Usage: just mcp restaurant|shoes|guest|tacos|ramen|spritz|taproom [server arguments...]" >&2; exit 2 ;; esac
 
-# Open a connected Codex CLI session: restaurant, shoes, or guest. Extra arguments go to Codex.
+# Open a Codex session for a business or guest. Extra arguments go to Codex.
 run role *args:
-    @case "$1" in restaurant|shoes|guest) ;; *) echo "Usage: just run restaurant|shoes|guest [Codex arguments...]" >&2; exit 2 ;; esac
+    @case "$1" in restaurant|shoes|guest|tacos|ramen|spritz|taproom) ;; *) echo "Usage: just run restaurant|shoes|guest|tacos|ramen|spritz|taproom [Codex arguments...]" >&2; exit 2 ;; esac
     @cargo build --quiet --locked
     @exec python3 examples/pizzeria/codex.py "$@"
 
@@ -22,3 +22,8 @@ run role *args:
 demo *args:
     @cargo build --quiet --locked
     @python3 examples/pizzeria/demo.py "$@"
+
+# Start the four independent food-court peers together. Enter stop to close them.
+foodcourt:
+    @cargo build --quiet --locked
+    @python3 examples/foodcourt/demo.py

@@ -6,10 +6,14 @@ from pathlib import Path
 import shutil
 import sys
 
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+from examples.foodcourt.peers import VENDORS
+
 
 def main():
-    if len(sys.argv) < 2 or sys.argv[1] not in ('restaurant', 'shoes', 'guest'):
-        sys.exit('Usage: codex.py restaurant|shoes|guest [Codex arguments...]')
+    if len(sys.argv) < 2 or sys.argv[1] not in ('restaurant', 'shoes', 'guest', *VENDORS):
+        sys.exit('Usage: codex.py restaurant|shoes|guest|tacos|ramen|spritz|taproom [Codex arguments...]')
     role = sys.argv[1]
     codex = shutil.which('codex')
     if codex is None:
@@ -25,6 +29,12 @@ def main():
         server_arguments.extend([
             '--share-live', '--name', 'Kiez Kicks', '--port', '47833',
             '--plugin', f'shoes={root / "fixtures/shoe-store.wasm"}',
+        ])
+    elif role in VENDORS:
+        name, port = VENDORS[role]
+        server_arguments.extend([
+            '--share-live', '--name', name, '--port', str(port),
+            '--plugin', f'vendor={root / "fixtures" / f"foodcourt-{role}.wasm"}',
         ])
     configuration = {
         'command': str(root / 'target/debug/hyperlocal-agent-apps'),
